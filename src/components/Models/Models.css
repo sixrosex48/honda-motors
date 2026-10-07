@@ -1,0 +1,127 @@
+.models {
+  scroll-margin-top: 80px;
+}
+
+.models {
+  min-height: 100vh;
+  padding: 120px 60px;
+  background-color: #0a0a0a;
+}
+
+.models__header {
+  max-width: 700px;
+  margin-bottom: 60px;
+}
+
+.models__subtitle {
+  margin: 0 0 20px;
+  color: #e10600;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.models__title {
+  margin: 0;
+  font-size: clamp(45px, 5vw, 75px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+
+.models__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+.model-card {
+  min-width: 0;
+}
+
+.model-card {
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: #111111;
+  border: 1px solid #222222;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+  min-width: 0;
+}
+
+.model-card:hover {
+  transform: translateY(-8px);
+  border-color: #444444;
+}
+
+.model-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 30px;
+  background-color: #151515;
+}
+
+.model-card__image img {
+  width: 100%;
+  max-width: 420px;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.model-card:hover .model-card__image img {
+  transform: scale(1.05);
+}
+
+.model-card__info {
+  padding: 30px;
+}
+
+.model-card__category {
+  margin: 0 0 10px;
+  color: #e10600;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.model-card__title {
+  margin: 0;
+  font-size: 32px;
+}
+
+.model-card__description {
+  margin: 15px 0 25px;
+  color: #999999;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.model-card__button {
+  padding: 12px 20px;
+  border: 1px solid #444444;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.model-card__button:hover {
+  background-color: #e10600;
+  border-color: #e10600;
+}
+
+@media (max-width: 900px) {
+  .models__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .models {
+    padding: 80px 25px;
+  }
+}
