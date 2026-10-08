@@ -1,33 +1,34 @@
+import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <a href="#inicio" className="navbar__logo">
+      <Link to="/" className="navbar__logo">
         HONDA MOTORS
-      </a>
+      </Link>
 
       <ul className="navbar__links">
         <li>
-          <a href="#inicio">Inicio</a>
+          <Link to="/">Inicio</Link>
         </li>
 
         <li>
-          <a href="#modelos">Modelos</a>
+          <Link to="/#modelos">Modelos</Link>
         </li>
 
         <li>
-          <a href="#nosotros">Nosotros</a>
+          <Link to="/nosotros">Nosotros</Link>
         </li>
 
         <li>
-          <a href="#contacto">Contacto</a>
+          <Link to="/#contacto">Contacto</Link>
         </li>
       </ul>
 
-      <a href="#modelos" className="navbar__button">
+      <Link to="/#modelos" className="navbar__button">
         Ver modelos
-      </a>
+      </Link>
     </nav>
   )
 }
