@@ -72,7 +72,7 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 5px;
   outline: none;
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(255, 255, 255, 0.035);
   color: #fff;
   font: inherit;
   font-size: 14px;
@@ -113,6 +113,12 @@
   border-color: rgba(225, 6, 0, 0.9);
   background: rgba(255, 255, 255, 0.065);
   box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.14);
+}
+
+.contact__field input:hover:not(:focus),
+.contact__field select:hover:not(:focus),
+.contact__field textarea:hover:not(:focus) {
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .contact__field-error {
@@ -191,11 +197,12 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 14px;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 58%),
     #151515;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.035);
 }
 
 .contact__visual-glow {

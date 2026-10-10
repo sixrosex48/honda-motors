@@ -109,7 +109,7 @@
   justify-self: end;
   width: min(100%, 820px);
   height: auto;
-  filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.48));
+  filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.48)) drop-shadow(0 0 34px rgba(225, 6, 0, 0.07));
   animation: about-car-arrive 1s ease both;
   transition: scale 0.35s ease;
 }
@@ -291,10 +291,18 @@
 .about-gallery__card {
   min-width: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   background: #f4f4f2;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.2);
   animation: about-card-arrive 0.65s ease both;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.about-gallery__card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(225, 6, 0, 0.36);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.34);
 }
 
 .about-gallery__card:nth-child(2),

@@ -12,10 +12,12 @@
   align-items: center;
   justify-content: space-between;
 
-  background-color: rgba(10, 10, 10, 0.85);
+  background-color: rgba(10, 10, 10, 0.78);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
 
   color: white;
 }
@@ -45,6 +47,7 @@
 }
 
 .navbar__links a {
+  position: relative;
   display: inline-block;
   color: #ffffff;
   text-decoration: none;
@@ -53,8 +56,33 @@
   transition: color 0.3s ease;
 }
 
+.navbar__links a::after {
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  height: 1px;
+  background: #e10600;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
 .navbar__links a:hover {
   color: #e10600;
+}
+
+.navbar__links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbar__links a:focus-visible,
+.navbar__logo:focus-visible,
+.navbar__button:focus-visible {
+  outline: 2px solid #ff5550;
+  outline-offset: 5px;
 }
 
 /* BOTÓN */
@@ -78,6 +106,7 @@
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;
+  box-shadow: 0 8px 24px rgba(225, 6, 0, 0.2);
 }
 
 .navbar__button:hover {

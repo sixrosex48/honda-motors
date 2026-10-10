@@ -50,8 +50,10 @@
 .hero__title {
   margin: 0;
   font-size: clamp(50px, 6vw, 90px);
+  font-weight: 700;
   line-height: 0.95;
   letter-spacing: -3px;
+  text-wrap: balance;
 }
 
 .hero__description {
@@ -73,6 +75,19 @@
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
+  box-shadow: 0 10px 30px rgba(225, 6, 0, 0.2);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.hero__button:hover {
+  transform: translateY(-2px);
+  background-color: #ff1a14;
+  box-shadow: 0 14px 34px rgba(225, 6, 0, 0.3);
+}
+
+.hero__button:focus-visible {
+  outline: 2px solid #ff5550;
+  outline-offset: 4px;
 }
 
 .hero__car {
