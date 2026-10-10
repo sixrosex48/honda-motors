@@ -1,20 +1,14 @@
 import DitherBurn from '../components/DitherBurn/DitherBurn'
 import hondaCivicTypeR from '../assets/images/car.png'
-import hondaCivicTypeRWhite from '../assets/images/car-2.png'
-import civic2020Image from '../assets/images/20200111-HONDA-CIVIC-2020-AA01.png'
-import crv2020Image from '../assets/images/20200211-HONDA-CR-V-2020-COLOMBIA-ADELANTO-01.png'
-import crvAdvancedImage from '../assets/images/honda-cr-v-advanced-hybrid-colombia-2026-atras.png'
-import hondaRentingImage from '../assets/images/Honda-Autos-Renting.png'
+import impulseImage from '../assets/images/impulso.jpg'
+import precisionImage from '../assets/images/precision.avif'
+import energyImage from '../assets/images/energia.jpg'
+import evolutionImage from '../assets/images/evolucion.avif'
+import innovationImage from '../assets/images/innovacion.avif'
+import futureImage from '../assets/images/futuro.jpg'
+import storyVideo from '../assets/images/video historia.mp4'
 import { Link } from 'react-router-dom'
 import './Nosotros.css'
-
-const storyVideo = Object.values(
-  import.meta.glob('../assets/videos/honda-story.mp4', {
-    eager: true,
-    query: '?url',
-    import: 'default',
-  }),
-)[0]
 
 const milestones = [
   {
@@ -56,38 +50,38 @@ const milestones = [
 
 const gallery = [
   {
-    image: civic2020Image,
-    alt: 'Honda Civic Type R azul visto de frente',
+    image: impulseImage,
+    alt: 'Imagen asociada al concepto de impulso',
     title: 'El impulso',
     detail: 'El diseño y la puesta a punto trabajan en conjunto para ofrecer una respuesta ágil y una conducción que transmite confianza.',
   },
   {
-    image: hondaCivicTypeRWhite,
-    alt: 'Automóvil Honda blanco de perfil',
+    image: precisionImage,
+    alt: 'Imagen asociada al concepto de precisión',
     title: 'La precisión',
     detail: 'Cada detalle, desde la dirección hasta el ajuste de sus componentes, aporta control y una sensación de manejo más precisa.',
   },
   {
-    image: crvAdvancedImage,
-    alt: 'Honda CR-V Advanced Hybrid 2026 vista trasera',
+    image: energyImage,
+    alt: 'Imagen asociada al concepto de energía',
     title: 'La energía',
     detail: 'La potencia, la eficiencia y la respuesta mecánica se equilibran para acompañar distintos recorridos y necesidades de movilidad.',
   },
   {
-    image: crv2020Image,
-    alt: 'Honda CR-V 2020 para Colombia vista frontal',
+    image: evolutionImage,
+    alt: 'Imagen asociada al concepto de evolución',
     title: 'La evolución',
     detail: 'La evolución automotriz convierte años de aprendizaje en vehículos más refinados, cómodos y capaces de adaptarse al camino.',
   },
   {
-    image: hondaRentingImage,
-    alt: 'Vehículo Honda SUV gris',
+    image: innovationImage,
+    alt: 'Imagen asociada al concepto de innovación',
     title: 'La innovación',
     detail: 'La tecnología ayuda a desarrollar vehículos cada vez más eficientes, seguros y conectados con las necesidades de sus conductores.',
   },
   {
-    image: hondaCivicTypeRWhite,
-    alt: 'Automóvil Honda blanco de alto rendimiento',
+    image: futureImage,
+    alt: 'Imagen asociada al concepto de futuro',
     title: 'El futuro',
     detail: 'Nuevas soluciones de ingeniería y movilidad abren posibilidades para viajar con mayor eficiencia, seguridad y libertad.',
   },
@@ -195,23 +189,15 @@ function Nosotros() {
         <div className="about-film__frame">
           <video
             className="about-film__video"
-            autoPlay
             loop
-            muted
             playsInline
+            controls
             preload="metadata"
             poster={hondaCivicTypeR}
             aria-label="Experiencia audiovisual Honda"
           >
-            {storyVideo && <source src={storyVideo} type="video/mp4" />}
+            <source src={storyVideo} type="video/mp4" />
           </video>
-          {!storyVideo && (
-            <div className="about-film__placeholder">
-              <span className="about-film__play" aria-hidden="true">▶</span>
-              <p>Una historia en movimiento</p>
-              <span>El video local se podrá añadir en src/assets/videos/honda-story.mp4</span>
-            </div>
-          )}
           <span className="about-film__duration">00:10 · HONDA STORY</span>
         </div>
       </section>

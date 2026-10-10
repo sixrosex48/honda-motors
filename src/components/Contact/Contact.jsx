@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { models } from '../Models/modelsData'
 import crvAdvancedImage from '../../assets/images/honda-cr-v-advanced-hybrid-colombia-2026-atras.png'
 import './Contact.css'
 
@@ -6,6 +7,7 @@ function Contact({ requestedVehicle = null, onRequestedVehicleChange }) {
   const [selectedModel, setSelectedModel] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [phoneError, setPhoneError] = useState('')
+  const selectedVehicle = requestedVehicle || models.find((model) => model.name === selectedModel)
 
   function handlePhoneChange(event) {
     const digits = event.target.value.replace(/\D/g, '')
@@ -130,13 +132,9 @@ function Contact({ requestedVehicle = null, onRequestedVehicleChange }) {
                       required
                     >
                       <option value="">Selecciona un modelo</option>
-                      <option value="Civic">Civic</option>
-                      <option value="Accord">Accord</option>
-                      <option value="CR-V">CR-V</option>
-                      <option value="HR-V">HR-V</option>
-                      <option value="Pilot">Pilot</option>
-                      <option value="City Hatchback">City Hatchback</option>
-                      <option value="Civic Type R">Civic Type R</option>
+                      {models.map((model) => (
+                        <option value={model.name} key={model.name}>{model.name}</option>
+                      ))}
                     </select>
                   </label>
 
@@ -162,10 +160,10 @@ function Contact({ requestedVehicle = null, onRequestedVehicleChange }) {
         <div className="contact__visual">
           <div className="contact__visual-glow" aria-hidden="true" />
           <img
-            src={requestedVehicle?.image || crvAdvancedImage}
+            src={selectedVehicle?.image || crvAdvancedImage}
             alt={
-              requestedVehicle
-                ? requestedVehicle.imageAlt || `Honda ${requestedVehicle.name}`
+              selectedVehicle
+                ? selectedVehicle.imageAlt || `Honda ${selectedVehicle.name}`
                 : 'Honda CR-V Advanced Hybrid Colombia 2026, vista trasera'
             }
             loading="lazy"

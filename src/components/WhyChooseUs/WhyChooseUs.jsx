@@ -1,4 +1,4 @@
-import carImage from '../../assets/images/car-2.png'
+import carImage from '../../assets/images/pexels-mikebird-12476502.png'
 import { useEffect, useState } from 'react'
 import './WhyChooseUs.css'
 

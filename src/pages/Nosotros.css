@@ -106,8 +106,8 @@
   position: relative;
   z-index: 2;
   grid-area: car;
-  justify-self: end;
-  width: min(100%, 820px);
+  justify-self: center;
+  width: min(100%, 900px);
   height: auto;
   filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.48)) drop-shadow(0 0 34px rgba(225, 6, 0, 0.07));
   animation: about-car-arrive 1s ease both;
@@ -320,15 +320,14 @@
   height: clamp(190px, 20vw, 285px);
   place-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at center, #fff 0%, #f1f1ef 74%, #e5e5e3 100%);
+  background: #101010;
 }
 
 .about-gallery__image img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 20px;
+  padding: 8px;
   transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -591,7 +590,7 @@
 
   .about-hero__car {
     justify-self: center;
-    width: min(100%, 450px);
+    width: min(100%, 560px);
   }
 
   .about-hero__index {
