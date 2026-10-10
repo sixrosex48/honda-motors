@@ -736,7 +736,7 @@ function createFieldTarget(gl) {
   }
 }
 
-function trackPointer(root) {
+function trackPointer(root, enabled) {
 
   const pointer = {
     tx: 0,
@@ -744,6 +744,7 @@ function trackPointer(root) {
     inside: false,
     seen: false,
   }
+  let listenersEnabled = false
 
   const readPointer = (event) => {
 
@@ -782,29 +783,29 @@ function trackPointer(root) {
     }
   }
 
-  window.addEventListener(
-    "pointermove",
-    readPointer,
-    { passive: true }
-  )
+  const setEnabled = (nextEnabled) => {
+    if (nextEnabled === listenersEnabled) return
 
-  window.addEventListener(
-    "pointerdown",
-    readPointer,
-    { passive: true }
-  )
+    listenersEnabled = nextEnabled
 
-  document.addEventListener(
-    "pointerout",
-    pointerOut
-  )
+    if (listenersEnabled) {
+      window.addEventListener(
+        "pointermove",
+        readPointer,
+        { passive: true }
+      )
 
-  return {
+      window.addEventListener(
+        "pointerdown",
+        readPointer,
+        { passive: true }
+      )
 
-    pointer,
-
-    dispose() {
-
+      document.addEventListener(
+        "pointerout",
+        pointerOut
+      )
+    } else {
       window.removeEventListener(
         "pointermove",
         readPointer
@@ -819,6 +820,23 @@ function trackPointer(root) {
         "pointerout",
         pointerOut
       )
+
+      pointer.inside = false
+      pointer.seen = false
+    }
+  }
+
+  setEnabled(enabled)
+
+  return {
+
+    pointer,
+
+    setEnabled,
+
+    dispose() {
+
+      setEnabled(false)
     },
   }
 }
@@ -919,6 +937,20 @@ function DitherBurn({
 
     if (!canvas || !root) return
 
+    const mobileQuery =
+      window.matchMedia(
+        "(max-width: 768px), (pointer: coarse)"
+      )
+
+    const reducedMotionQuery =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      )
+
+    let isStatic =
+      mobileQuery.matches ||
+      reducedMotionQuery.matches
+
     const gl =
       canvas.getContext(
         "webgl2",
@@ -995,7 +1027,7 @@ function DitherBurn({
       createFieldTarget(gl)
 
     const pointerTracker =
-      trackPointer(root)
+      trackPointer(root, !isStatic)
 
     const pointer =
       pointerTracker.pointer
@@ -1010,8 +1042,10 @@ function DitherBurn({
 
     const render = (now) => {
 
-      animationFrame =
-        requestAnimationFrame(render)
+      if (!isStatic) {
+        animationFrame =
+          requestAnimationFrame(render)
+      }
 
       const delta =
         lastTime < 0
@@ -1290,13 +1324,82 @@ function DitherBurn({
       )
     }
 
-    animationFrame =
-      requestAnimationFrame(render)
+    const updateMotionMode = () => {
+      const nextIsStatic =
+        mobileQuery.matches ||
+        reducedMotionQuery.matches
+
+      if (nextIsStatic === isStatic) return
+
+      isStatic = nextIsStatic
+      pointerTracker.setEnabled(!isStatic)
+
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame)
+      }
+
+      animationFrame = 0
+      lastTime = -1
+
+      if (isStatic) {
+        render(performance.now())
+      } else {
+        animationFrame =
+          requestAnimationFrame(render)
+      }
+    }
+
+    const scheduleStaticResize = () => {
+      if (!isStatic || animationFrame) return
+
+      animationFrame =
+        requestAnimationFrame((now) => {
+          animationFrame = 0
+
+          if (isStatic) {
+            render(now)
+          }
+        })
+    }
+
+    const resizeObserver =
+      new ResizeObserver(scheduleStaticResize)
+
+    resizeObserver.observe(root)
+
+    mobileQuery.addEventListener(
+      "change",
+      updateMotionMode
+    )
+
+    reducedMotionQuery.addEventListener(
+      "change",
+      updateMotionMode
+    )
+
+    if (isStatic) {
+      render(performance.now())
+    } else {
+      animationFrame =
+        requestAnimationFrame(render)
+    }
 
     return () => {
 
       cancelAnimationFrame(
         animationFrame
+      )
+
+      resizeObserver.disconnect()
+
+      mobileQuery.removeEventListener(
+        "change",
+        updateMotionMode
+      )
+
+      reducedMotionQuery.removeEventListener(
+        "change",
+        updateMotionMode
       )
 
       pointerTracker.dispose()
