@@ -1,6 +1,10 @@
 import DitherBurn from '../components/DitherBurn/DitherBurn'
 import hondaCivicTypeR from '../assets/images/car.png'
 import hondaCivicTypeRWhite from '../assets/images/car-2.png'
+import civic2020Image from '../assets/images/20200111-HONDA-CIVIC-2020-AA01.png'
+import crv2020Image from '../assets/images/20200211-HONDA-CR-V-2020-COLOMBIA-ADELANTO-01.png'
+import crvAdvancedImage from '../assets/images/honda-cr-v-advanced-hybrid-colombia-2026-atras.png'
+import hondaRentingImage from '../assets/images/Honda-Autos-Renting.png'
 import { Link } from 'react-router-dom'
 import './Nosotros.css'
 
@@ -52,40 +56,40 @@ const milestones = [
 
 const gallery = [
   {
-    image: hondaCivicTypeR,
+    image: civic2020Image,
     alt: 'Honda Civic Type R azul visto de frente',
     title: 'El impulso',
-    detail: 'Ingeniería creada para emocionar.',
+    detail: 'El diseño y la puesta a punto trabajan en conjunto para ofrecer una respuesta ágil y una conducción que transmite confianza.',
   },
   {
     image: hondaCivicTypeRWhite,
-    alt: 'Honda Civic Type R blanco visto desde arriba',
+    alt: 'Automóvil Honda blanco de perfil',
     title: 'La precisión',
-    detail: 'Cada línea tiene un propósito.',
+    detail: 'Cada detalle, desde la dirección hasta el ajuste de sus componentes, aporta control y una sensación de manejo más precisa.',
   },
   {
-    image: hondaCivicTypeR,
-    alt: 'Detalle del diseño deportivo del Honda Civic Type R',
+    image: crvAdvancedImage,
+    alt: 'Honda CR-V Advanced Hybrid 2026 vista trasera',
     title: 'La energía',
-    detail: 'Rendimiento con carácter.',
+    detail: 'La potencia, la eficiencia y la respuesta mecánica se equilibran para acompañar distintos recorridos y necesidades de movilidad.',
   },
   {
-    image: hondaCivicTypeRWhite,
-    alt: 'Silueta deportiva de un Honda Civic Type R blanco',
+    image: crv2020Image,
+    alt: 'Honda CR-V 2020 para Colombia vista frontal',
     title: 'La evolución',
-    detail: 'Una idea que nunca deja de avanzar.',
+    detail: 'La evolución automotriz convierte años de aprendizaje en vehículos más refinados, cómodos y capaces de adaptarse al camino.',
   },
   {
-    image: hondaCivicTypeR,
-    alt: 'Honda Civic Type R azul, símbolo de innovación',
+    image: hondaRentingImage,
+    alt: 'Vehículo Honda SUV gris',
     title: 'La innovación',
-    detail: 'Tecnología al servicio del movimiento.',
+    detail: 'La tecnología ayuda a desarrollar vehículos cada vez más eficientes, seguros y conectados con las necesidades de sus conductores.',
   },
   {
     image: hondaCivicTypeRWhite,
-    alt: 'Honda Civic Type R blanco, diseño de alto rendimiento',
+    alt: 'Automóvil Honda blanco de alto rendimiento',
     title: 'El futuro',
-    detail: 'El próximo camino empieza hoy.',
+    detail: 'Nuevas soluciones de ingeniería y movilidad abren posibilidades para viajar con mayor eficiencia, seguridad y libertad.',
   },
 ]
 

@@ -153,13 +153,6 @@
   outline-offset: 3px;
 }
 
-.contact__privacy {
-  margin: 15px 0 0;
-  color: #858585;
-  font-size: 11px;
-  line-height: 1.5;
-}
-
 .contact__success {
   display: flex;
   flex-direction: column;
@@ -219,6 +212,7 @@
   width: 100%;
   max-width: 620px;
   height: auto;
+  object-fit: contain;
   filter: drop-shadow(0 24px 36px rgba(0, 0, 0, 0.5));
   animation: contact-car-arrive 0.8s ease both;
 }

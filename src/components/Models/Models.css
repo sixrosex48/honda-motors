@@ -239,6 +239,19 @@
   padding-top: 24px;
 }
 
+.model-card__details-title {
+  margin: 12px 0 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.model-card__details-description {
+  margin: 8px 0 0;
+  color: #b5b5b5;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
 .model-card__details dl {
   display: grid;
   gap: 12px;
@@ -248,7 +261,7 @@
 }
 
 .model-card__details--open dl {
-  padding-top: 15px;
+  padding-top: 12px;
 }
 
 .model-card__spec {

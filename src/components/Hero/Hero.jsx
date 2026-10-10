@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import DitherBurn from '../DitherBurn/DitherBurn'
 import carImage from '../../assets/images/car.png'
 import './Hero.css'
@@ -30,9 +31,9 @@ function Hero() {
           tecnología y diseño.
         </p>
 
-        <button className="hero__button">
+        <Link className="hero__button" to="/#modelos">
           Explorar modelos
-        </button>
+        </Link>
       </div>
 
       <img

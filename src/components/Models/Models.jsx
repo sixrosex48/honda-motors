@@ -2,94 +2,108 @@ import { useEffect, useState } from 'react'
 import './Models.css'
 import carImage from '../../assets/images/car.png'
 import carImageWhite from '../../assets/images/car-2.png'
+import civic2020Image from '../../assets/images/20200111-HONDA-CIVIC-2020-AA01.png'
+import crv2020Image from '../../assets/images/20200211-HONDA-CR-V-2020-COLOMBIA-ADELANTO-01.png'
 import DitherBurn from '../DitherBurn/DitherBurn'
 
+// Especificaciones conceptuales de ejemplo; no son datos oficiales de Honda.
 const models = [
   {
     name: 'Civic',
     category: 'SEDÁN',
-    image: carImage,
+    image: civic2020Image,
+    imageAlt: 'Honda Civic 2020 Type R azul',
     description: 'Diseño deportivo, tecnología avanzada y una experiencia de conducción excepcional.',
-    motor: 'Opciones a combustión o híbridas, según versión',
-    power: 'Configuración dependiente del mercado',
-    transmission: 'Manual o automática, según versión',
-    technology: 'Conectividad y asistencias disponibles según versión',
-    highlight: 'Silueta deportiva y versátil',
+    detailDescription: 'Un compacto de carácter deportivo que combina respuesta ágil, control preciso y comodidad para el uso diario.',
+    engineDesignation: '2.0 Turbo Sport',
+    motorType: '4 cilindros, turbo a gasolina',
+    power: 'Aproximadamente 280 hp',
+    torque: 'Aproximadamente 295 lb-ft',
+    fuelConsumption: 'Aproximadamente 11–13 km/L combinado',
+    transmission: 'Manual de 6 velocidades',
+    technology: 'Diferencial de deslizamiento limitado para mejorar la tracción.',
   },
   {
     name: 'Accord',
     category: 'SEDÁN',
     image: carImage,
     description: 'Elegancia, confort y potencia para disfrutar cada trayecto con máxima comodidad.',
-    motor: 'Opciones a combustión o híbridas, según versión',
-    power: 'Configuración dependiente del mercado',
-    transmission: 'Automática, según versión',
-    technology: 'Conectividad y asistencias disponibles según versión',
-    highlight: 'Confort con líneas sofisticadas',
+    detailDescription: 'Un sedán de enfoque refinado, pensado para ofrecer viajes cómodos, respuesta progresiva y eficiencia equilibrada.',
+    engineDesignation: '1.5 Turbo Touring',
+    motorType: '4 cilindros, turbo a gasolina',
+    power: 'Aproximadamente 192 hp',
+    torque: 'Aproximadamente 192 lb-ft',
+    fuelConsumption: 'Aproximadamente 13–16 km/L combinado',
+    transmission: 'Automática CVT',
+    technology: 'Modos de conducción para adaptar la respuesta del vehículo.',
   },
   {
     name: 'CR-V',
     category: 'SUV',
-    image: carImage,
+    image: crv2020Image,
+    imageAlt: 'Honda CR-V 2020 para Colombia',
     description: 'Espacio, seguridad y tecnología para acompañarte en cada aventura.',
-    motor: 'Opciones a combustión o híbridas, según versión',
-    power: 'Configuración dependiente del mercado',
-    transmission: 'Automática, según versión',
-    technology: 'Conectividad y asistencias disponibles según versión',
-    highlight: 'Espacio flexible para cada recorrido',
+    detailDescription: 'Una SUV versátil con cabina amplia y una configuración híbrida conceptual para combinar desempeño y eficiencia.',
+    engineDesignation: '2.0 e:HEV',
+    motorType: 'Híbrido: 4 cilindros y motores eléctricos',
+    power: 'Aproximadamente 204 hp combinados',
+    torque: 'Aproximadamente 247 lb-ft combinados',
+    fuelConsumption: 'Aproximadamente 16–19 km/L combinado',
+    transmission: 'e-CVT',
+    technology: 'Gestión híbrida que alterna entre propulsión eléctrica y de combustión.',
   },
   {
     name: 'HR-V',
     category: 'SUV COMPACTA',
     image: carImageWhite,
     description: 'Un formato urbano con espacio inteligente y estilo contemporáneo.',
-    motor: 'Configuración según versión y mercado',
-    power: 'Especificación dependiente del mercado',
-    transmission: 'Disponible según versión',
-    technology: 'Conectividad y asistencias según configuración',
-    highlight: 'Diseño compacto y práctico',
+    detailDescription: 'Una SUV compacta diseñada para moverse con facilidad en la ciudad, con una posición de manejo elevada y un interior flexible.',
+    engineDesignation: '2.0 i-VTEC',
+    motorType: '4 cilindros atmosférico a gasolina',
+    power: 'Aproximadamente 158 hp',
+    torque: 'Aproximadamente 138 lb-ft',
+    fuelConsumption: 'Aproximadamente 13–16 km/L combinado',
+    transmission: 'Automática CVT',
+    technology: 'Asistencia de estabilidad y modos de conducción seleccionables.',
   },
   {
     name: 'Pilot',
     category: 'SUV',
     image: carImage,
     description: 'Una SUV amplia pensada para compartir viajes y nuevos destinos.',
-    motor: 'Configuración según versión y mercado',
-    power: 'Especificación dependiente del mercado',
-    transmission: 'Disponible según versión',
-    technology: 'Conectividad y asistencias según configuración',
-    highlight: 'Cabina espaciosa para viajar en compañía',
+    detailDescription: 'Una SUV familiar de tres filas que prioriza la amplitud, la comodidad en carretera y una entrega de potencia suave.',
+    engineDesignation: '3.5 V6 Adventure',
+    motorType: 'V6 atmosférico a gasolina',
+    power: 'Aproximadamente 285 hp',
+    torque: 'Aproximadamente 262 lb-ft',
+    fuelConsumption: 'Aproximadamente 9–11 km/L combinado',
+    transmission: 'Automática de 10 velocidades',
+    technology: 'Control de tracción para mejorar el avance en superficies variables.',
   },
   {
     name: 'City Hatchback',
     category: 'HATCHBACK',
     image: carImageWhite,
     description: 'Agilidad para la ciudad con una propuesta versátil y funcional.',
-    motor: 'Configuración según versión y mercado',
-    power: 'Especificación dependiente del mercado',
-    transmission: 'Disponible según versión',
-    technology: 'Conectividad y asistencias según configuración',
-    highlight: 'Formato urbano y adaptable',
-  },
-  {
-    name: 'Civic Type R',
-    category: 'ALTO DESEMPEÑO',
-    image: carImage,
-    description: 'Carácter deportivo, ingeniería enfocada y una presencia inconfundible.',
-    motor: 'Motor turbo, según generación y mercado',
-    power: 'Especificación dependiente del mercado',
-    transmission: 'Manual, según versión y mercado',
-    technology: 'Tecnología orientada al rendimiento',
-    highlight: 'Diseño aerodinámico de alto carácter',
+    detailDescription: 'Un hatchback compacto y práctico, con dimensiones ágiles para la ciudad y espacio adaptable para el día a día.',
+    engineDesignation: '1.5 i-VTEC Urban',
+    motorType: '4 cilindros atmosférico a gasolina',
+    power: 'Aproximadamente 121 hp',
+    torque: 'Aproximadamente 107 lb-ft',
+    fuelConsumption: 'Aproximadamente 15–18 km/L combinado',
+    transmission: 'Automática CVT',
+    technology: 'Asientos traseros abatibles para ampliar el espacio de carga.',
   },
 ]
 
 const informationLabels = [
-  ['Motor', 'motor'],
+  ['Denominación', 'engineDesignation'],
+  ['Tipo de motor', 'motorType'],
   ['Potencia', 'power'],
+  ['Torque', 'torque'],
+  ['Consumo', 'fuelConsumption'],
   ['Transmisión', 'transmission'],
-  ['Tecnología', 'technology'],
-  ['Diseño', 'highlight'],
+  ['Tecnología / mecánica', 'technology'],
 ]
 
 function ModelCard({ model, index, isExpanded, onToggle, onRequestInfo }) {
@@ -98,7 +112,11 @@ function ModelCard({ model, index, isExpanded, onToggle, onRequestInfo }) {
   return (
     <article className={`model-card${isExpanded ? ' model-card--expanded' : ''}`}>
       <div className="model-card__image">
-        <img src={model.image} alt={`Imagen conceptual para Honda ${model.name}`} loading="lazy" />
+        <img
+          src={model.image}
+          alt={model.imageAlt || `Imagen conceptual para Honda ${model.name}`}
+          loading="lazy"
+        />
       </div>
 
       <div className="model-card__info">
@@ -122,7 +140,11 @@ function ModelCard({ model, index, isExpanded, onToggle, onRequestInfo }) {
           aria-hidden={!isExpanded}
         >
           <div className="model-card__details-inner">
-            <p className="model-card__details-label">FICHA CONCEPTUAL</p>
+            <p className="model-card__details-label">
+              FICHA CONCEPTUAL · DATOS DEMOSTRATIVOS, NO OFICIALES
+            </p>
+            <h4 className="model-card__details-title">{model.name}</h4>
+            <p className="model-card__details-description">{model.detailDescription}</p>
             <dl>
               {informationLabels.map(([label, key]) => (
                 <div className="model-card__spec" key={key}>
@@ -134,10 +156,10 @@ function ModelCard({ model, index, isExpanded, onToggle, onRequestInfo }) {
             <button
               className="model-card__contact"
               type="button"
-              onClick={() => onRequestInfo(model.name)}
+              onClick={() => onRequestInfo(model)}
               tabIndex={isExpanded ? 0 : -1}
             >
-              Solicitar información
+              Probar este carro
             </button>
           </div>
         </div>
@@ -158,8 +180,8 @@ function Models({ onRequestInfo }) {
   const activePage = Math.min(currentPage, pageCount - 1)
   const carouselGap = visibleCount === 1 ? 16 : 25
 
-  function requestModelInformation(modelName) {
-    onRequestInfo(modelName)
+  function requestModelInformation(model) {
+    onRequestInfo(model)
     document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })
   }
 

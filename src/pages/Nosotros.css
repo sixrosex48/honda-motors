@@ -9,7 +9,7 @@
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   grid-template-areas:
     "content car"
     "index car";
@@ -107,10 +107,17 @@
   z-index: 2;
   grid-area: car;
   justify-self: end;
-  width: min(100%, 760px);
+  width: min(100%, 820px);
   height: auto;
   filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.48));
   animation: about-car-arrive 1s ease both;
+  transition: scale 0.35s ease;
+}
+
+@media (hover: hover) {
+  .about-hero__car:hover {
+    scale: 1.04;
+  }
 }
 
 .about-hero__index {

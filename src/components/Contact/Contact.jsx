@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import carImage from '../../assets/images/car.png'
+import crvAdvancedImage from '../../assets/images/honda-cr-v-advanced-hybrid-colombia-2026-atras.png'
 import './Contact.css'
 
-function Contact({ requestedModel = '', onRequestedModelChange }) {
+function Contact({ requestedVehicle = null, onRequestedVehicleChange }) {
   const [selectedModel, setSelectedModel] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [phoneError, setPhoneError] = useState('')
@@ -122,10 +122,10 @@ function Contact({ requestedModel = '', onRequestedModelChange }) {
                     <span>Modelo de interés</span>
                     <select
                       name="model"
-                      value={requestedModel || selectedModel}
+                      value={requestedVehicle?.name || selectedModel}
                       onChange={(event) => {
                         setSelectedModel(event.target.value)
-                        onRequestedModelChange('')
+                        onRequestedVehicleChange(null)
                       }}
                       required
                     >
@@ -154,9 +154,6 @@ function Contact({ requestedModel = '', onRequestedModelChange }) {
                 <button className="contact__submit" type="submit">
                   Registrar <span aria-hidden="true">→</span>
                 </button>
-                <p className="contact__privacy">
-                  Formulario demostrativo. Tus datos no se envían ni almacenan.
-                </p>
               </form>
             )}
           </div>
@@ -165,8 +162,12 @@ function Contact({ requestedModel = '', onRequestedModelChange }) {
         <div className="contact__visual">
           <div className="contact__visual-glow" aria-hidden="true" />
           <img
-            src={carImage}
-            alt="Honda Civic Type R azul"
+            src={requestedVehicle?.image || crvAdvancedImage}
+            alt={
+              requestedVehicle
+                ? requestedVehicle.imageAlt || `Honda ${requestedVehicle.name}`
+                : 'Honda CR-V Advanced Hybrid Colombia 2026, vista trasera'
+            }
             loading="lazy"
             decoding="async"
           />

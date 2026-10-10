@@ -9,16 +9,16 @@ import Nosotros from './pages/Nosotros'
 import './App.css'
 
 function Home() {
-  const [requestedModel, setRequestedModel] = useState('')
+  const [requestedVehicle, setRequestedVehicle] = useState(null)
 
   return (
     <main className="app">
       <Hero />
       <WhyChooseUs />
-      <Models onRequestInfo={setRequestedModel} />
+      <Models onRequestInfo={setRequestedVehicle} />
       <Contact
-        requestedModel={requestedModel}
-        onRequestedModelChange={setRequestedModel}
+        requestedVehicle={requestedVehicle}
+        onRequestedVehicleChange={setRequestedVehicle}
       />
     </main>
   )
